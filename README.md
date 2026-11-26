@@ -11,7 +11,7 @@ python -m pip install -r requirements.txt
 python -m flask --app app run --port 5001
 ```
 
-Open http://localhost:5001. The attendance links default to the local Streamlit app at http://localhost:8501. Set `SNAPCLASS_PORTAL_URL` to your deployed Streamlit URL when hosting the landing page.
+Open http://localhost:5001. The attendance links default to the public SnapClass portal at https://snapclasses-anirudh.streamlit.app/. Set `SNAPCLASS_PORTAL_URL` to override the target (for example, `http://localhost:8501` for local Streamlit testing).
 
 The Flask page needs no Supabase credentials. The preview runs in the browser and does not save attendance.
 

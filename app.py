@@ -4,7 +4,7 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 app.config["SNAPCLASS_PORTAL_URL"] = os.getenv(
-    "SNAPCLASS_PORTAL_URL", "http://localhost:8501"
+    "SNAPCLASS_PORTAL_URL", "https://snapclasses-anirudh.streamlit.app/"
 )
 
 
