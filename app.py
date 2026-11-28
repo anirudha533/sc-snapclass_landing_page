@@ -1,4 +1,5 @@
 import os
+from urllib.parse import parse_qsl, urlencode, urlsplit
 
 from flask import Flask, render_template
 
@@ -10,4 +11,9 @@ app.config["SNAPCLASS_PORTAL_URL"] = os.getenv(
 
 @app.get("/")
 def index():
-    return render_template("index.html", portal_url=app.config["SNAPCLASS_PORTAL_URL"])
+    portal_url = app.config["SNAPCLASS_PORTAL_URL"]
+    portal = urlsplit(portal_url)
+    demo_query = dict(parse_qsl(portal.query, keep_blank_values=True))
+    demo_query["demo"] = "1"
+    guest_demo_url = portal._replace(query=urlencode(demo_query)).geturl()
+    return render_template("index.html", portal_url=portal_url, guest_demo_url=guest_demo_url)
